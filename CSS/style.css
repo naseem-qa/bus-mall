@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+   background-image: url(https://previews.123rf.com/images/9dreamstudio/9dreamstudio1803/9dreamstudio180300319/96502230-shopping-delivery-concept-shopping-online-white-background-top-view-.jpg);
+    text-align: center;
+    font-family: 'Righteous', sans-serif;
+    color: rgb(221, 76, 76);
+  
+  }
+
+  .nn {
+    font-family: 'Modak', cursive;
+    font-size: 70px;
+  }
+  
+  section div {
+    width:25%;
+    float: left;
+    padding: 30px;
+  }
+  
+  section div img {
+    max-width: 200%;
+    height: 200px;
+    border: 10px solid rgb(221, 76, 76);
+    border-radius: 10%;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+
+ 
+ table , th ,td {
+    border: 1px solid black;
+    padding: 3px 10px; 
+  } 
+
+ 
+
+  .img {
+    position: relative;
+    float: left;
+    width:  300px;
+    height: 300px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+.kk{
+    font-family: 'Modak', cursive;
+    font-size: larger;
+   margin-top:200px;
+}
