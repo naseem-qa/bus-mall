@@ -169,8 +169,8 @@ function clickHandler(event) {
     // updateTotals();
 
     if (Goods.roundregister === Goods.roundpollLimit) {
-
       alert('No more clicking for you!');
+      finalChart(); 
 
       Goods.container.removeEventListener('click', clickHandler);
 
@@ -181,41 +181,38 @@ function clickHandler(event) {
   }
 }
 
-function showChart() {
-  var goodsArr = [];
-  var clickArr = [];
-  var showArr = [];
+function finalChart() {
+  var goodsArray = [];
+  var clickArray = [];
+  var showArray = [];
   for (var i = 0; i <Goods.all.length; i++) {
-    var things = Goods.all[i];
-    goodsArr.push(things.title + 'Vote');
-    goodsArr.push(things.title + 'Shown');
-    clickArr.push(things.clickCtr);
-    showArr.push(things.shownCtr);
+    var goods = Goods.all[i];
+    goodsArray.push(goods.title + 'Vote');
+    goodsArray.push(goods.title + 'Shown');
+    clickArray.push(goods.clickregister);
+    showArray.push(goods.shownregister);
     
   }
 var ctx = document.getElementById('new Chart').getContext('2d');
 var chart = new Chart(ctx, {
-    // The type of chart we want to create
     type: 'bar',
-    // The data for our dataset
     data: {
         labels: ['Bag ', 'Banana ', 'Bathroom ', 'Boots ', 'Breakfast ', 'Bubblegum ', 'Chair ','Cthulhu ','Dog-Duck ','Dragon ','Pen ','Pet-Sweep ','Scissors ','Shark ','Sweep ','Tauntaun ','Unicorn ','USB ','Water-Can ','Wine-Glass '],
         datasets: [
           {
             label: 'indecates the voted ones',
             backgroundColor: ['red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red',],
-            borderColor: ['yellow'],
-            data: clickArr,
+            borderColor: ['green'],
+            data: clickArray,
           },
           {
             label: 'indicates the shown ones',
-            backgroundColor: ['green','green','green','green','green','green','green','green','green','green','green','green','green','green','green','green','green','green','green','green',],
-            borderColor: ['yellow'] ,
-            data: showArr,
+            backgroundColor: ['brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown','brown',],
+            borderColor: ['green'] ,
+            data: showArray,
           }
       ]
     },
-    // Configuration options go here
     options: {}
 });
 }
@@ -228,4 +225,4 @@ resultList();
 // updateTotals();
 
 renderNewGoods();
-showChart(); 
+finalChart(); 
