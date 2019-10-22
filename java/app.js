@@ -108,18 +108,31 @@ function randomInRange(min, max) {
   return rand;
 }
 
-function updateTotals() {
 
-  var tablestrc = document.getElementById('CONTNER');
-  tablestrc.innerHTML = '';
-  for (var i = 0; i < Goods.all.length; i++) {
-    var goods = Goods.all[i];
-    var row = addElement('tr', tablestrc);
-    addElement('td', row, goods.title);
-    addElement('td', row, '' + goods.clickregister);
-    addElement('td', row, '' + goods.shownregister);
+function resultList(){
+      var ullist = document.getElementById("CONTNER");
+      var li = document.createElement('li');
+      ullist.appendChild(li);
+      for (var i = 0; i < Goods.all.length; i++) {
+          var mer = Goods.all[i]
+          li = document.createElement('li');
+          ullist.appendChild(li);
+          li.textContent= '* ' +  mer.title + " had " + mer.clickregister + " votes and was shown " + mer.shownregister + " times.";
+      }
   }
-}
+
+// function updateTotals() {
+
+//   var tablestrc = document.getElementById('CONTNER');
+//   tablestrc.innerHTML = '';
+//   for (var i = 0; i < Goods.all.length; i++) {
+//     var goods = Goods.all[i];
+//     var row = addElement('tr', tablestrc);
+//     addElement('td', row, goods.title);
+//     addElement('td', row, '' + goods.clickregister);
+//     addElement('td', row, '' + goods.shownregister);
+//   }
+// }
 
 function addElement(tag, container, text) {
   var element = document.createElement(tag);
@@ -149,8 +162,8 @@ function clickHandler(event) {
   if (goodsClicked) {
     goodsClicked.clickregister++;
     Goods.roundregister++;
-
-    updateTotals();
+    resultList();
+    // updateTotals();
 
     if (Goods.roundregister === Goods.roundpollLimit) {
 
@@ -168,6 +181,7 @@ function clickHandler(event) {
 
 Goods.container.addEventListener('click', clickHandler);
 
-updateTotals();
+resultList();
+// updateTotals();
 
 renderNewGoods();
