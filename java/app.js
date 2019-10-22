@@ -111,8 +111,11 @@ function randomInRange(min, max) {
 
 function resultList(){
       var ullist = document.getElementById("CONTNER");
+       ullist.innerHTML = '';
       var li = document.createElement('li');
+
       ullist.appendChild(li);
+
       for (var i = 0; i < Goods.all.length; i++) {
           var mer = Goods.all[i]
           li = document.createElement('li');
@@ -225,4 +228,4 @@ resultList();
 // updateTotals();
 
 renderNewGoods();
-showChart();
+showChart(); 
