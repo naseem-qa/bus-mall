@@ -165,14 +165,19 @@ function clickHandler(event) {
   if (goodsClicked) {
     goodsClicked.clickregister++;
     Goods.roundregister++;
-    resultList();
+    // resultList();the first place where the sentences shown before end click
     // updateTotals();
 
     if (Goods.roundregister === Goods.roundpollLimit) {
+      resultList();
+     
       alert('No more clicking for you!');
       finalChart(); 
 
-      Goods.container.removeEventListener('click', clickHandler);
+      Goods.container.removeEventListener('click', clickHandler); 
+
+      var productString = JSON.stringify(Goods.all);
+      localStorage.setItem('products', productString);
 
     } else {
 
@@ -221,7 +226,28 @@ var chart = new Chart(ctx, {
 
 Goods.container.addEventListener('click', clickHandler);
 
-resultList();
+function getStoredProducts() {
+
+  // retreive the stored into about list of product
+  var productString = localStorage.getItem('products');
+
+  if(productString) {
+    
+    var rawObjectArray = JSON.parse(productString);
+
+    for(var i=0; i < rawObjectArray.length; i++) {
+      var rawObject = rawObjectArray[i];
+      var currentInstance = Goods.all[i];
+      currentInstance.clickCtr = rawObject.clickregister;
+      currentInstance.shownCtr = rawObject.shownregister;
+      
+    }
+  }
+}
+
+getStoredProducts();
+
+// resultList();
 // updateTotals();
 
 renderNewGoods();
