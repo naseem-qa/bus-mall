@@ -175,6 +175,7 @@ function clickHandler(event) {
       finalChart(); 
 
       Goods.container.removeEventListener('click', clickHandler); 
+      //local
 
       var productString = JSON.stringify(Goods.all);
       localStorage.setItem('products', productString);
@@ -224,7 +225,6 @@ var chart = new Chart(ctx, {
 
 
 
-Goods.container.addEventListener('click', clickHandler);
 
 function getStoredProducts() {
 
@@ -238,14 +238,16 @@ function getStoredProducts() {
     for(var i=0; i < rawObjectArray.length; i++) {
       var rawObject = rawObjectArray[i];
       var currentInstance = Goods.all[i];
-      currentInstance.clickCtr = rawObject.clickregister;
-      currentInstance.shownCtr = rawObject.shownregister;
+      currentInstance.clickregister= rawObject.clickregister;
+      currentInstance.shownregister = rawObject.shownregister;
       
     }
   }
 }
 
 getStoredProducts();
+Goods.container.addEventListener('click', clickHandler);
+
 
 // resultList();
 // updateTotals();
